@@ -1,0 +1,16 @@
+<h1>Profil :</h1>
+<p><%= @user.email %></p><br>
+
+
+<h2>Articles vendus :</h2><br>
+<% @user.articles.each do |article| %>
+  <h3><strong>Nom :</strong> <%= article.name %></h3>
+  <p><strong>Description :</strong> <%= article.description %></p>
+  <p><strong>Prix :</strong> <%= article.price %>€</p><br>
+<% end %>
+
+<% if @user == current_user%>
+<%= link_to 'Modifier mes infos', edit_user_registration_path %>
+<% else %>
+<%= link_to 'Les articles', article_index_path %>
+<%end%>

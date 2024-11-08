@@ -1,0 +1,5 @@
+<h1>Les détails de l'article : <%= @article.name %> </h1>
+<p><%= @article.description %></p>
+<p><%= @article.price %>€</p>
+<%= link_to "#{@article.vendor.email}", profil_path(@article.vendor.id) %>
+<%= link_to "Voir tous les articles", articles_path %>

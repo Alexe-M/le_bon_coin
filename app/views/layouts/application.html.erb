@@ -21,13 +21,15 @@
     <nav>
       <%= link_to "Accueil", root_path, class: "linknav" %> 
       <% if user_signed_in? %>
+        <%= link_to "Mon profil", profil_path(current_user.id)%>
+        <%= link_to "Vendre un article", new_article_path %>
         <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "linknav", data: {turbo_method: :delete} %>
       <% else %>
         <%= link_to "Se connecter", new_user_session_path, class: "linknav" %> 
         <%= link_to "S'inscrire", new_user_registration_path, class: "linknav" %> 
       <% end %>
     </nav>
-    
+
     <%= yield %>
   </body>
 </html>
