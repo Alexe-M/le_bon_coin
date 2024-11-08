@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem 'devise'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'stripe'
 
 

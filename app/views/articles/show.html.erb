@@ -3,3 +3,7 @@
 <p><%= @article.price %>€</p>
 <%= link_to "#{@article.vendor.email}", profil_path(@article.vendor.id) %>
 <%= link_to "Voir tous les articles", articles_path %>
+
+
+<%= button_to "Acheter", checkout_create_path(total: @article.price, article_id: @article.id), class: "btn btn-primary", data: {turbo: false} %>
+
