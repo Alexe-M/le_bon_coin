@@ -30,10 +30,12 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @article_id = @session.metadata.article_id
+    @article = Article.find(@article_id)
 
     stripe_customer_id = "stripe_#{SecureRandom.hex(10)}"
     Order.create(user_id: current_user.id, article_id: @article_id, stripe_customer_id: stripe_customer_id)
-    redirect to articles_path
+    @article.update(sold: true)
+    redirect_to articles_path
 
   end
 
